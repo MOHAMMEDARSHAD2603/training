@@ -1,0 +1,108 @@
+/******************************************************************************
+E-Commerce Product System
+An e-commerce application sells different products:
+Electronics
+Clothing
+Grocery
+All products have:
+Product ID
+Product Name
+Price
+But discount calculation differs.
+Electronics:
+10% discount
+Clothing:
+20% discount
+Grocery:
+5% discount
+Requirements:
+Create abstract class Product.
+Create abstract method calculateDiscount().
+Create child classes.
+Override the method.
+Calculate final price.
+Use a Product reference to demonstrate runtime polymorphism.
+
+*******************************************************************************/
+abstract class Product{
+    int productId;
+    String productName;
+    double price;
+    
+    Product(int productId,String productName,double price)
+    {
+        this.productId=productId;
+        this.productName=productName;
+        this.price=price;
+    }
+    // abstract method
+    abstract double calculateDiscount();
+    // Concreate Method
+    double calculateFinalPrice()
+    {
+        return price-calculateDiscount();
+    }
+    void displayDetails()
+    {
+      System.out.println("ProductId  : "+ productId);  
+      System.out.println("ProductName  : "+ productName);  
+      System.out.println("Price  : "+ price);  
+      System.out.println("Discount  : "+ calculateDiscount());  
+      System.out.println("Final Price  : "+ calculateFinalPrice());  
+    }
+    
+}
+class Electronics extends Product
+{
+    Electronics(int productId,String productName,double price)
+    {
+        super(productId,productName,price);
+    }
+    
+    double calculateDiscount()
+    {
+        return price*10/100;
+    }
+    
+}
+class Clothing extends Product
+{
+    Clothing(int productId,String productName,double price)
+    {
+        super(productId,productName,price);
+    }
+    
+    double calculateDiscount()
+    {
+        return price*20/100;
+    }
+    
+}
+class Grocery extends Product
+{
+    Grocery(int productId,String productName,double price)
+    {
+        super(productId,productName,price);
+    }
+    
+    double calculateDiscount()
+    {
+        return price*5/100;
+    }
+    
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Product p;
+		System.out.println("<-------------Electronics------------>");
+		p=new Electronics(123,"Laptop",55000);
+		p.displayDetails();
+		System.out.println("<-------------Clothing------------>");
+		p=new Clothing(456,"shirt",999);
+		p.displayDetails();
+		System.out.println("<-------------Grocery------------>");
+		p=new Grocery(789,"ashirvad atta",450);
+		p.displayDetails();
+	}
+}
