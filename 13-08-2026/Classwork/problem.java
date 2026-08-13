@@ -72,7 +72,7 @@ class BankAccount {
     }
 }
 
-public class Main {
+public class problem {
     public static void main(String[] args) {
         BankAccount account1 = new BankAccount(1001, "Arun", "9876543210", "Savings", 25000);
         BankAccount account2 = new BankAccount(1002, "Kumar", "9876501234", "Current", 50000);
